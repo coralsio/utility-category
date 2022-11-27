@@ -43,7 +43,7 @@
                             <div class="form-group" style="">
                                 <span data-name="options"></span>
                                 {!! CoralsForm::label('options', 'utility-category::attributes.attributes.options') !!}
-                                @include('utility-category::category.attributes.options',[
+                                @include('utility-category::attributes.options',[
                                                                 'name'=>'options',
 
                                 'options'=> $attribute->options??[]

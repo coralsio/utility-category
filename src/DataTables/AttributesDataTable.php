@@ -46,7 +46,7 @@ class AttributesDataTable extends BaseDataTable
             'label' => ['title' => trans('utility-category::attributes.attributes.label')],
             'type' => ['title' => trans('utility-category::attributes.attributes.type')],
             'required' => ['title' => trans('utility-category::attributes.attributes.required')],
-            'use_as_filter' => ['title' => trans('Utility::attributes.attributes.use_as_filter')],
+            'use_as_filter' => ['title' => trans('utility-category::attributes.attributes.use_as_filter')],
             'created_at' => ['title' => trans('Corals::attributes.created_at')],
             'updated_at' => ['title' => trans('Corals::attributes.updated_at')],
         ];

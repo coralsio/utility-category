@@ -23,7 +23,7 @@
             @component('components.box')
                 <div class="dd" id="sortable-tree">
                     <ol class="dd-list">
-                        @include('utility-category::category.categories.hierarchy_item', ['categories'=> \Category::getCategoriesRootList()])
+                        @include('utility-category::categories.hierarchy_item', ['categories'=> \Category::getCategoriesRootList()])
                     </ol>
                 </div>
             @endcomponent

@@ -9,7 +9,7 @@
                 <span class="pull-right dd-nodrag">{!! $category->present('action') !!}</span>
             </div>
             <ol class="dd-list">
-                @include('utility-category::category.categories.hierarchy_item', ['categories'=> $category->getChildren()])
+                @include('utility-category::categories.hierarchy_item', ['categories'=> $category->getChildren()])
             </ol>
         </li>
     @else
