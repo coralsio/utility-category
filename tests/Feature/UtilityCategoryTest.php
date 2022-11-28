@@ -46,9 +46,6 @@ class UtilityCategoryTest extends TestCase
                     "slug" => $category,
                     "status" => "active",
                     "module" => $module,
-                    "parent_id" => null,
-                    "description" => null,
-                    "is_featured" => false,
                 ]);
 
                 $this->category = Category::query()->first();
