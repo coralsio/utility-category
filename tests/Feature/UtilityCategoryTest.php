@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Corals\Modules\Utility\Category\Models\Category;
 use Corals\Settings\Facades\Modules;
-use Corals\User\Models\Role;
 use Corals\User\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +56,7 @@ class UtilityCategoryTest extends TestCase
             }
         }
 
-        if (!$active) {
+        if (! $active) {
             $category = array_rand($categories);
             $response = $this->post('utilities/categories', [
                 "name" => $category,

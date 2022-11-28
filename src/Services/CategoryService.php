@@ -18,7 +18,7 @@ class CategoryService extends BaseServiceClass
             $category->clearMediaCollection($category->mediaCollectionName);
         }
 
-        if ($request->hasFile('thumbnail') && !$request->has('clear')) {
+        if ($request->hasFile('thumbnail') && ! $request->has('clear')) {
             $category->addMedia($request->file('thumbnail'))
                 ->withCustomProperties(['root' => 'user_' . user()->hashed_id])
                 ->toMediaCollection($category->mediaCollectionName);

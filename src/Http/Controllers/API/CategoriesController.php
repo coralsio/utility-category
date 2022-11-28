@@ -41,6 +41,7 @@ class CategoriesController extends APIBaseController
     {
         try {
             $category = $this->categoryService->store($request, Category::class);
+
             return apiResponse($this->categoryService->getModelDetails(), trans('Corals::messages.success.created', ['item' => $category->name]));
         } catch (\Exception $exception) {
             return apiExceptionResponse($exception);

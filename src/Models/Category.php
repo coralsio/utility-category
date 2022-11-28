@@ -3,21 +3,24 @@
 namespace Corals\Modules\Utility\Category\Models;
 
 use Corals\Foundation\Models\BaseModel;
-use Corals\Foundation\Transformers\PresentableTrait;
 use Corals\Foundation\Traits\Node\SimpleNode;
+use Corals\Foundation\Transformers\PresentableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Category extends BaseModel implements HasMedia
 {
-    use PresentableTrait, LogsActivity, InteractsWithMedia , SimpleNode;
+    use PresentableTrait;
+    use LogsActivity;
+    use InteractsWithMedia ;
+    use SimpleNode;
 
     protected $table = 'utility_categories';
 
     protected $casts = [
         'is_featured' => 'boolean',
-        'properties' => 'json'
+        'properties' => 'json',
     ];
 
     public $mediaCollectionName = 'utility-category-thumbnail';
@@ -48,7 +51,6 @@ class Category extends BaseModel implements HasMedia
     {
         $this->attributes['slug'] = \Str::slug($value);
     }
-
 
     public function renderCategoryOptions($product, $attributes = [])
     {

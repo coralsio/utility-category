@@ -62,6 +62,7 @@ class AttributesDataTable extends BaseDataTable
     protected function getOptions()
     {
         $url = url(config('utility-category.models.attribute.resource_url'));
+
         return ['resource_url' => $url];
     }
 }

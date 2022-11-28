@@ -3,9 +3,9 @@
 namespace Corals\Modules\Utility\Category\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\BaseController;
+use Corals\Foundation\Http\Requests\BulkRequest;
 use Corals\Modules\Utility\Category\DataTables\CategoriesDataTable;
 use Corals\Modules\Utility\Category\Http\Requests\CategoryRequest;
-use Corals\Foundation\Http\Requests\BulkRequest;
 use Corals\Modules\Utility\Category\Models\Category;
 use Corals\Modules\Utility\Category\Services\CategoryService;
 use Illuminate\Http\Request;
@@ -113,11 +113,9 @@ class CategoriesController extends BaseController
      * @param Category $category
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function bulkAction(BulkRequest $request)
     {
         try {
-
             $action = $request->input('action');
             $selection = json_decode($request->input('selection'), true);
 
@@ -125,19 +123,20 @@ class CategoriesController extends BaseController
                 case 'delete':
                     foreach ($selection as $selection_id) {
                         $category = Category::findByHash($selection_id);
-                        $category_request = new CategoryRequest;
+                        $category_request = new CategoryRequest();
                         $category_request->setMethod('DELETE');
                         $this->destroy($category_request, $category);
                     }
                     $message = ['level' => 'success', 'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])];
+
                     break;
 
-                case 'active' :
+                case 'active':
                     foreach ($selection as $selection_id) {
                         $category = Category::findByHash($selection_id);
                         if (user()->can('Utility::category.update')) {
                             $category->update([
-                                'status' => 'active'
+                                'status' => 'active',
                             ]);
                             $category->save();
                             $message = ['level' => 'success', 'message' => trans('utility-category::attributes.update_status', ['item' => $this->title_singular])];
@@ -145,14 +144,15 @@ class CategoriesController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('utility-category::attributes.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
-                case 'inActive' :
+                case 'inActive':
                     foreach ($selection as $selection_id) {
                         $category = Category::findByHash($selection_id);
                         if (user()->can('Utility::category.update')) {
                             $category->update([
-                                'status' => 'inactive'
+                                'status' => 'inactive',
                             ]);
                             $category->save();
                             $message = ['level' => 'success', 'message' => trans('utility-category::attributes.update_status', ['item' => $this->title_singular])];
@@ -160,10 +160,9 @@ class CategoriesController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('utility-category::attributes.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
             }
-
-
         } catch (\Exception $exception) {
             log_exception($exception, Category::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];
@@ -197,6 +196,7 @@ class CategoriesController extends BaseController
         if (user()->cannot('update', Category::class)) {
             abort(403, 'Forbidden!!');
         }
+
         return view('utility-category::categories.hierarchy');
     }
 

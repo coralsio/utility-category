@@ -19,6 +19,7 @@ class AttributePolicy extends BasePolicy
         if ($user->can('Utility::attribute.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -41,6 +42,7 @@ class AttributePolicy extends BasePolicy
         if ($user->can('Utility::attribute.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -54,6 +56,7 @@ class AttributePolicy extends BasePolicy
         if ($user->can('Utility::attribute.delete')) {
             return true;
         }
+
         return false;
     }
 }

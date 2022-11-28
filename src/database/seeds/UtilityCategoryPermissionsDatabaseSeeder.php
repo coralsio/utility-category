@@ -74,6 +74,5 @@ class UtilityCategoryPermissionsDatabaseSeeder extends Seeder
             $member_role->forgetCachedPermissions();
             $member_role->givePermissionTo('Utility::attribute.view');
         }
-
     }
 }
