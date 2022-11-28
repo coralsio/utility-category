@@ -23,7 +23,7 @@ class AttributeService extends BaseServiceClass
             AttributeOption::query()->updateOrCreate(['id' => $option_id, 'attribute_id' => $attribute->id], $option);
         }
 
-        if (!empty($attribute_options)) {
+        if (! empty($attribute_options)) {
             $attribute->options()->whereIn('id', array_keys($attribute_options))->forceDelete();
         }
 
@@ -31,7 +31,7 @@ class AttributeService extends BaseServiceClass
             $attribute->clearMediaCollection($attribute->mediaCollectionName);
         }
 
-        if ($request->hasFile('thumbnail') && !$request->has('clear')) {
+        if ($request->hasFile('thumbnail') && ! $request->has('clear')) {
             $attribute->addMedia($request->file('thumbnail'))
                 ->withCustomProperties(['root' => 'user_' . user()->hashed_id])
                 ->toMediaCollection($attribute->mediaCollectionName);

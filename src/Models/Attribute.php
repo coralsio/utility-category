@@ -11,7 +11,10 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Attribute extends BaseModel implements HasMedia
 {
-    use PresentableTrait, LogsActivity, ModelPropertiesTrait, InteractsWithMedia ;
+    use PresentableTrait;
+    use LogsActivity;
+    use ModelPropertiesTrait;
+    use InteractsWithMedia ;
 
     protected $table = 'utility_attributes';
 

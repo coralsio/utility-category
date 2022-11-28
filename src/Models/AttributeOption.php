@@ -8,7 +8,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class AttributeOption extends BaseModel
 {
-    use PresentableTrait, LogsActivity;
+    use PresentableTrait;
+    use LogsActivity;
 
     public $timestamps = false;
 
@@ -28,10 +29,8 @@ class AttributeOption extends BaseModel
         'properties' => 'json',
     ];
 
-
     public function attribute()
     {
         return $this->belongsToMany(Attribute::class);
     }
-
 }

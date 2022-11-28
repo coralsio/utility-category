@@ -30,7 +30,7 @@ class AttributeTransformer extends BaseTransformer
             'use_as_filter' => $attribute->use_as_filter ? '<i class="fa fa-check text-success"></i>' : '-',
             'created_at' => format_date($attribute->created_at),
             'updated_at' => format_date($attribute->updated_at),
-            'action' => $this->actions($attribute)
+            'action' => $this->actions($attribute),
         ];
 
         return parent::transformResponse($transformedArray);

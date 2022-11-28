@@ -1,4 +1,5 @@
 <?php
+
 //Category
 Breadcrumbs::register('utility_categories', function ($breadcrumbs) {
     $breadcrumbs->parent('dashboard');
@@ -18,5 +19,3 @@ Breadcrumbs::register('utility_attribute_create_edit', function ($breadcrumbs) {
     $breadcrumbs->parent('utility_attributes');
     $breadcrumbs->push(view()->shared('title_singular'));
 });
-
-

@@ -138,7 +138,6 @@ class CreateCategoryAttributeTables extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-
     }
 
     /**

@@ -14,8 +14,11 @@ class AttributeTransformer extends APIBaseTransformer
      */
     public function transform(Attribute $attribute)
     {
-        $categories = apiPluck($attribute->categories()->pluck('utility_categories.name', 'utility_categories.id'),
-            'id', 'name');
+        $categories = apiPluck(
+            $attribute->categories()->pluck('utility_categories.name', 'utility_categories.id'),
+            'id',
+            'name'
+        );
         $optionsList = [];
 
         foreach ($attribute->options as $option) {

@@ -5,9 +5,9 @@ return [
         'order' => 'Order',
         'value' => 'Value',
         'display' => 'Display',
-        'add_new_option' => ' click to add new option.'
+        'add_new_option' => ' click to add new option.',
     ],
     'category' => [
-        'hierarchy' => 'Hierarchy'
-    ]
+        'hierarchy' => 'Hierarchy',
+    ],
 ];

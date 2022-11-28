@@ -38,7 +38,6 @@ class UtilityAttributesTest extends TestCase
         $this->attribute = Attribute::query()->first();
 
         $response->assertRedirect('utilities/attributes');
-
     }
 
     public function test_utility_attribute_edit()

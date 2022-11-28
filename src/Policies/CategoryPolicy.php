@@ -19,6 +19,7 @@ class CategoryPolicy extends BasePolicy
         if ($user->can('Utility::category.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -41,6 +42,7 @@ class CategoryPolicy extends BasePolicy
         if ($user->can('Utility::category.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -54,7 +56,7 @@ class CategoryPolicy extends BasePolicy
         if ($user->can('Utility::category.delete')) {
             return true;
         }
+
         return false;
     }
-
 }

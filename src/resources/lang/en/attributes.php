@@ -23,7 +23,7 @@ return [
         'clear' => 'Clear thumbnail image',
         'thumbnail' => 'Thumbnail',
         'attributes' => 'Attributes',
-        'thumbnail_link' => 'Thumbnail Link'
+        'thumbnail_link' => 'Thumbnail Link',
     ],
     'update_status' => 'Status has been update.',
     'no_permission' => 'There is no permission update status',

@@ -31,7 +31,7 @@ class CategoryTransformer extends BaseTransformer
             'status' => formatStatusAsLabels($category->status),
             'created_at' => format_date($category->created_at),
             'updated_at' => format_date($category->updated_at),
-            'action' => $this->actions($category)
+            'action' => $this->actions($category),
         ];
 
         return parent::transformResponse($transformedArray);

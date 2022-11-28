@@ -4,10 +4,10 @@ namespace Corals\Modules\Utility\Category;
 
 use Corals\Modules\Utility\Category\Facades\Category;
 
-use Corals\Modules\Utility\Category\Models\Category as CargoryModel;
-use Corals\Modules\Utility\Category\Models\Category as CategoryModel;
 use Corals\Modules\Utility\Category\Models\Attribute;
 use Corals\Modules\Utility\Category\Models\AttributeOption;
+use Corals\Modules\Utility\Category\Models\Category as CargoryModel;
+use Corals\Modules\Utility\Category\Models\Category as CategoryModel;
 use Corals\Modules\Utility\Category\Providers\UtilityAuthServiceProvider;
 use Corals\Modules\Utility\Category\Providers\UtilityRouteServiceProvider;
 use Corals\Modules\Utility\Models\Category\ModelOption;

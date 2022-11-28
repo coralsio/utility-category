@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\Utility\Category\Traits;
 
-
 use Corals\Modules\Utility\Category\Models\Category;
 use Corals\Modules\Utility\Category\Models\ModelOption;
 use Illuminate\Database\Eloquent\Model;
@@ -12,9 +11,7 @@ trait ModelHasCategory
     public static function bootModelHasCategory()
     {
         static::deleted(function (Model $deletedModel) {
-
             $deletedModel->categories()->detach();
-
         });
     }
 

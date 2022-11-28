@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\Utility\Category\database\seeds;
 
-use Corals\Modules\Utility\Category\database\seeds\UtilityCategoryMenuDatabaseSeeder;
 use Corals\User\Models\Permission;
 use Illuminate\Database\Seeder;
 

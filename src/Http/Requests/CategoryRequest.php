@@ -32,14 +32,14 @@ class CategoryRequest extends BaseRequest
         if ($this->isUpdate() || $this->isStore()) {
             $rules = array_merge($rules, [
                 'status' => 'required',
-                'thumbnail' => 'nullable|image'
+                'thumbnail' => 'nullable|image',
             ]);
         }
 
         if ($this->isStore()) {
             $rules = array_merge($rules, [
                 'name' => 'required|max:191|unique:utility_categories,name',
-                'slug' => 'required|max:191|unique:utility_categories,slug'
+                'slug' => 'required|max:191|unique:utility_categories,slug',
             ]);
         }
 

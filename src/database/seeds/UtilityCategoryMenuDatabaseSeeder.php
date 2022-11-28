@@ -13,10 +13,11 @@ class UtilityCategoryMenuDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $utilities_menu_id = \DB::table('menus')->where('key' , 'utility')->pluck('id')->first();
+        $utilities_menu_id = \DB::table('menus')->where('key', 'utility')->pluck('id')->first();
 
 
-        \DB::table('menus')->insert([
+        \DB::table('menus')->insert(
+            [
                 [
                     'parent_id' => $utilities_menu_id,
                     'key' => null,
@@ -27,7 +28,7 @@ class UtilityCategoryMenuDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-folder-open',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $utilities_menu_id,
@@ -39,7 +40,7 @@ class UtilityCategoryMenuDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-sliders',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
             ]
         );

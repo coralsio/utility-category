@@ -8,7 +8,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class ModelOption extends BaseModel
 {
-    use PresentableTrait, LogsActivity;
+    use PresentableTrait;
+    use LogsActivity;
 
     protected $table = 'utility_model_attribute_options';
     /**
@@ -51,12 +52,14 @@ class ModelOption extends BaseModel
         switch ($type) {
             case 'checkbox':
                 $value = $this->value ? '&#10004;' : '-';
+
                 break;
             case 'text':
             case 'date':
             case 'textarea':
             case 'number':
                 $value = $this->value;
+
                 break;
             case 'multi_values':
 
@@ -82,12 +85,15 @@ class ModelOption extends BaseModel
                 if ($option) {
                     $value = $option->option_display;
                 }
+
                 break;
             case 'color':
                 $value = "<div style=\"display:inline-block;background-color:{$this->value};height: 100%;width: 25px;\">&nbsp;</div>";
+
                 break;
             default:
                 $value = $this->value;
+
                 break;
         }
 
@@ -109,15 +115,18 @@ class ModelOption extends BaseModel
             case 'text':
             case 'date':
                 $name = 'string_value';
+
                 break;
             case 'textarea':
                 $name = 'text_value';
+
                 break;
             case 'number':
             case 'select':
             case 'multi_values':
             case 'radio':
                 $name = 'number_value';
+
                 break;
             default:
                 $name = 'string_value';
@@ -140,7 +149,6 @@ class ModelOption extends BaseModel
         return $this;
     }
 
-
     /**
      * Get  model.
      */
@@ -148,8 +156,4 @@ class ModelOption extends BaseModel
     {
         return $this->morphTo();
     }
-
-
-
-
 }

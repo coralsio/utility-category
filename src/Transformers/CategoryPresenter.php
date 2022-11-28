@@ -6,7 +6,6 @@ use Corals\Foundation\Transformers\FractalPresenter;
 
 class CategoryPresenter extends FractalPresenter
 {
-
     /**
      * @param array $extras
      * @return CategoryTransformer|\League\Fractal\TransformerAbstract

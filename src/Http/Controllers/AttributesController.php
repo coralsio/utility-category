@@ -48,7 +48,7 @@ class AttributesController extends BaseController
         $attribute = new Attribute();
 
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular])
+            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular]),
         ]);
 
         return view('utility-category::attributes.create_edit')->with(compact('attribute'));
@@ -89,7 +89,7 @@ class AttributesController extends BaseController
     public function edit(AttributeRequest $request, Attribute $attribute)
     {
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.update_title', ['title' => $attribute->label])
+            'title_singular' => trans('Corals::labels.update_title', ['title' => $attribute->label]),
         ]);
 
         return view('utility-category::.attributes.create_edit')->with(compact('attribute'));
@@ -118,7 +118,6 @@ class AttributesController extends BaseController
      * @param Attribute $attribute
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function bulkAction(BulkRequest $request)
     {
         try {
@@ -129,14 +128,15 @@ class AttributesController extends BaseController
                 case 'delete':
                     foreach ($selection as $selection_id) {
                         $attribute = Attribute::findByHash($selection_id);
-                        $attribute_request = new AttributeRequest;
+                        $attribute_request = new AttributeRequest();
                         $attribute_request->setMethod('DELETE');
                         $this->destroy($attribute_request, $attribute);
                     }
                     $message = [
                         'level' => 'success',
-                        'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                        'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
                     ];
+
                     break;
             }
         } catch (\Exception $exception) {
@@ -154,7 +154,7 @@ class AttributesController extends BaseController
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
             ];
         } catch (\Exception $exception) {
             log_exception($exception, Attribute::class, 'destroy');
@@ -170,7 +170,7 @@ class AttributesController extends BaseController
         $categories_ids = Arr::wrap(json_decode(urldecode($categories_ids)));
         $modelClass = $request->get('model_class', []);
 
-        if (!is_array($categories_ids)) {
+        if (! is_array($categories_ids)) {
             return '';
         }
 
@@ -179,7 +179,7 @@ class AttributesController extends BaseController
 
         $categories = Category::query()->whereIn('id', $categories_ids)->get();
 
-        if (!is_null($modelId) && class_exists($modelClass)) {
+        if (! is_null($modelId) && class_exists($modelClass)) {
             $instance = $modelClass::findByHash($modelId);
         }
 
