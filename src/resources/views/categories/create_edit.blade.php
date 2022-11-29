@@ -25,7 +25,7 @@
                         {!! CoralsForm::text('name','utility-category::attributes.category.name',true) !!}
                         {!! CoralsForm::text('slug','utility-category::attributes.category.slug',true) !!}
                         {!! CoralsForm::radio('status','Corals::attributes.status',true, trans('Corals::attributes.status_options')) !!}
-                        {!! CoralsForm::select('module','Utility::attributes.tag.module', \Utility::getUtilityModules()) !!}
+                        {!! CoralsForm::select('module','Utility::attributes.module', \Utility::getUtilityModules()) !!}
                         {!! CoralsForm::select('parent_id', 'utility-category::attributes.category.parent_cat', \Category::getCategoriesList(null,true, false, null, $category->exists?[$category->id]:[]), false, null, [], 'select2') !!}
                         {!! CoralsForm::checkbox('is_featured', 'utility-category::attributes.category.is_featured', $category->is_featured) !!}
                         {!! CoralsForm::select('category_attributes[]','utility-category::attributes.category.attributes', \Category::getAttributesList(),
