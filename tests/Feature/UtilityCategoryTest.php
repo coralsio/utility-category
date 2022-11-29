@@ -31,8 +31,8 @@ class UtilityCategoryTest extends TestCase
             'Classified' => 'corals-classified',
             'TroubleTicket' => 'corals-trouble-ticket',
             'Directory' => 'corals-directory',
-            'Reservation' => 'corals-reservation',
-            'Entity' => 'corals-entity',
+            'Marketplace' => 'corals-marketplace',
+            'CMS'=>'corals-cms',
         ];
         $categories = ['planet', 'hotel', 'caves', 'streams'];
         $active = false;
