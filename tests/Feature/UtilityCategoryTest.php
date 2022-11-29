@@ -32,7 +32,7 @@ class UtilityCategoryTest extends TestCase
             'TroubleTicket' => 'corals-trouble-ticket',
             'Directory' => 'corals-directory',
             'Marketplace' => 'corals-marketplace',
-            'CMS'=>'corals-cms',
+            'CMS' => 'corals-cms',
         ];
         $categories = ['planet', 'hotel', 'caves', 'streams'];
         $active = false;
