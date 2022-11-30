@@ -13,7 +13,7 @@ class UtilityCategoryTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected $category = [];
+    protected $category;
 
     protected function setUp(): void
     {
@@ -41,23 +41,31 @@ class UtilityCategoryTest extends TestCase
                 $active = true;
                 $category = array_rand($categories);
                 $response = $this->post('utilities/categories', [
-                    "name" => $category,
-                    "slug" => $category,
+                    "name" => $categories[$category],
+                    "slug" => $categories[$category],
                     "status" => "active",
                     "module" => $module,
                 ]);
 
                 $this->category = Category::query()->first();
 
-                $response->assertRedirect('utilities/categories');
+                $response->assertRedirect('utilities/categories')
+                    ->assertDontSee('The given data was invalid');
+
+                $this->assertDatabaseHas('utility_categories', [
+                    "name" => $this->category->name,
+                    "slug" => $this->category->slug,
+                    "status" => $this->category->status,
+                    "module" => $this->category->module,
+                ]);
             }
         }
 
         if (! $active) {
             $category = array_rand($categories);
             $response = $this->post('utilities/categories', [
-                "name" => $category,
-                "slug" => $category,
+                "name" => $categories[$category],
+                "slug" => $categories[$category],
                 "status" => "active",
                 "module" => null,
                 "parent_id" => null,
@@ -66,24 +74,35 @@ class UtilityCategoryTest extends TestCase
             ]);
             $this->category = Category::query()->first();
 
-            $response->assertRedirect('utilities/categories');
-        }
+            $response->assertRedirect('utilities/categories')
+                ->assertDontSee('The given data was invalid');
 
-        $this->assertTrue(true);
+            $this->assertDatabaseHas('utility_categories', [
+                "name" => $this->category->name,
+                "slug" => $this->category->slug,
+                "status" => $this->category->status,
+                "module" => $this->category->module,
+            ]);
+        }
     }
 
     public function test_utility_category_edit()
     {
+        $this->test_utility_category_store();
+
         if ($this->category) {
             $response = $this->get('utilities/categories/' . $this->category->hashed_id . '/edit');
 
             $response->assertStatus(200)->assertViewIs('utility-category::categories.create_edit');
+
         }
         $this->assertTrue(true);
     }
 
     public function test_utility_category_update()
     {
+        $this->test_utility_category_store();
+
         if ($this->category) {
             $response = $this->put('utilities/categories/' . $this->category->hashed_id, [
                 "name" => $this->category->name,
@@ -94,7 +113,14 @@ class UtilityCategoryTest extends TestCase
                 "description" => $this->category->description,
                 "is_featured" => $this->category->is_featured,]);
 
-            $response->assertStatus(200)->assertRedirect('utilities/categories');
+            $response->assertRedirect('utilities/categories');
+
+            $this->assertDatabaseHas('utility_categories', [
+                "name" => $this->category->name,
+                "slug" => $this->category->slug,
+                "status" => 'inactive',
+                "module" => $this->category->module,
+            ]);
         }
         $this->assertTrue(true);
     }
@@ -105,6 +131,13 @@ class UtilityCategoryTest extends TestCase
             $response = $this->delete('utilities/categories/' . $this->category->hashed_id);
 
             $response->assertStatus(200)->assertSeeText('Category has been deleted successfully.');
+
+            $this->isSoftDeletableModel(Category::class);
+            $this->assertDatabaseMissing('utility_categories', [
+                "name" => $this->category->name,
+                "slug" => $this->category->slug,
+                "status" => $this->category->status,
+                "module" => $this->category->module]);
         }
         $this->assertTrue(true);
     }

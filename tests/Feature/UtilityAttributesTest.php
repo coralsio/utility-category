@@ -12,7 +12,7 @@ class UtilityAttributesTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected $attribute = [];
+    protected $attribute;
 
     protected function setUp(): void
     {
@@ -29,19 +29,30 @@ class UtilityAttributesTest extends TestCase
         $attributes = get_array_key_translation(config('settings.models.custom_field_setting.supported_types'));
         $attribute = array_rand($attributes);
         $response = $this->post('utilities/attributes', [
-            'type' => $attribute,
-            'label' => $attribute,
+            'type' => $attributes[$attribute],
+            'label' => $attributes[$attribute],
             "display_order" => '0',
             "required" => false,
             "use_as_filter" => false,
         ]);
         $this->attribute = Attribute::query()->first();
 
-        $response->assertRedirect('utilities/attributes');
+        $response->assertRedirect('utilities/attributes')
+            ->assertDontSee('The given data was invalid');
+
+        $this->assertDatabaseHas('utility_attributes', [
+            'type' => $this->attribute->type,
+            'label' => $this->attribute->label,
+            "display_order" => $this->attribute->display_order,
+            "required" => $this->attribute->required,
+            "use_as_filter" => $this->attribute->use_as_filter,
+        ]);
     }
 
     public function test_utility_attribute_edit()
     {
+        $this->test_utility_attribute_store();
+
         if ($this->attribute) {
             $response = $this->get('utilities/attributes/' . $this->attribute->hashed_id . '/edit');
 
@@ -52,24 +63,48 @@ class UtilityAttributesTest extends TestCase
 
     public function test_utility_attribute_update()
     {
+        $this->test_utility_attribute_store();
+
         if ($this->attribute) {
             $attributes = get_array_key_translation(config('settings.models.custom_field_setting.supported_types'));
             $attribute = array_rand($attributes);
             $response = $this->put('utilities/attributes/' . $this->attribute->hashed_id, [
-                "type" => $attribute,
-                "label" => $this->attribute->label,]);
+                "type" => $attributes[$attribute],
+                "label" => $this->attribute->label,
+                "display_order" => $this->attribute->display_order,
+                "required" => $this->attribute->required,
+                "use_as_filter" => $this->attribute->use_as_filter,
+                ]);
 
-            $response->assertStatus(200)->assertRedirect('utilities/attributes');
+            $response->assertRedirect('utilities/attributes');
+
+            $this->assertDatabaseHas('utility_attributes', [
+                'type' => $attributes[$attribute],
+                'label' => $this->attribute->label,
+                "display_order" => $this->attribute->display_order,
+                "required" => $this->attribute->required,
+                "use_as_filter" => $this->attribute->use_as_filter,
+            ]);
         }
         $this->assertTrue(true);
     }
 
     public function test_utility_attribute_delete()
     {
+        $this->test_utility_attribute_store();
+
         if ($this->attribute) {
             $response = $this->delete('utilities/attributes/' . $this->attribute->hashed_id);
 
             $response->assertStatus(200)->assertSeeText('Attribute has been deleted successfully.');
+
+            $this->isSoftDeletableModel(Attribute::class);
+            $this->assertDatabaseMissing('utility_attributes', [
+                'type' => $this->attribute->type,
+                'label' => $this->attribute->label,
+                "display_order" => $this->attribute->display_order,
+                "required" => $this->attribute->required,
+                "use_as_filter" => $this->attribute->use_as_filter,]);
         }
         $this->assertTrue(true);
     }
