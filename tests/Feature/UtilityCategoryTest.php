@@ -94,7 +94,6 @@ class UtilityCategoryTest extends TestCase
             $response = $this->get('utilities/categories/' . $this->category->hashed_id . '/edit');
 
             $response->assertStatus(200)->assertViewIs('utility-category::categories.create_edit');
-
         }
         $this->assertTrue(true);
     }
@@ -137,7 +136,7 @@ class UtilityCategoryTest extends TestCase
                 "name" => $this->category->name,
                 "slug" => $this->category->slug,
                 "status" => $this->category->status,
-                "module" => $this->category->module]);
+                "module" => $this->category->module, ]);
         }
         $this->assertTrue(true);
     }
