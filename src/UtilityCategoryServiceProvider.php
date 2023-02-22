@@ -2,8 +2,8 @@
 
 namespace Corals\Modules\Utility\Category;
 
+use Corals\Foundation\Providers\BasePackageServiceProvider;
 use Corals\Modules\Utility\Category\Facades\Category;
-
 use Corals\Modules\Utility\Category\Models\Attribute;
 use Corals\Modules\Utility\Category\Models\AttributeOption;
 use Corals\Modules\Utility\Category\Models\Category as CargoryModel;
@@ -15,11 +15,15 @@ use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
 
-class UtilityCategoryServiceProvider extends ServiceProvider
+class UtilityCategoryServiceProvider extends BasePackageServiceProvider
 {
-    public function boot()
+    /**
+     * @var
+     */
+    protected $packageCode = 'corals-utility-category';
+
+    public function bootPackage()
     {
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'utility-category');
         $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'utility-category');
@@ -35,11 +39,9 @@ class UtilityCategoryServiceProvider extends ServiceProvider
 
         $this->registerMorphMaps();
         $this->registerCustomFieldsModels();
-
-        $this->registerModulesPackages();
     }
 
-    public function register()
+    public function registerPackage()
     {
         $this->app->register(UtilityAuthServiceProvider::class);
         $this->app->register(UtilityRouteServiceProvider::class);
@@ -65,7 +67,7 @@ class UtilityCategoryServiceProvider extends ServiceProvider
         Settings::addCustomFieldModel(CategoryModel::class, 'Category (Utility)');
     }
 
-    protected function registerModulesPackages()
+    public function registerModulesPackages()
     {
         Modules::addModulesPackages('corals/utility-category');
     }
