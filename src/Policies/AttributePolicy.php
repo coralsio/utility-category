@@ -3,8 +3,8 @@
 namespace Corals\Utility\Category\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\Utility\Category\Models\Attribute;
 use Corals\User\Models\User;
+use Corals\Utility\Category\Models\Attribute;
 
 class AttributePolicy extends BasePolicy
 {

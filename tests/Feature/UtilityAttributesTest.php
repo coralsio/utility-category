@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Corals\Utility\Category\Models\Attribute;
 use Corals\User\Models\User;
+use Corals\Utility\Category\Models\Attribute;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
