@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Http\Requests;
+namespace Corals\Utility\Category\Http\Requests;
 
 use Corals\Foundation\Http\Requests\BaseRequest;
-use Corals\Modules\Utility\Category\Models\Category;
+use Corals\Utility\Category\Models\Category;
 
 class CategoryRequest extends BaseRequest
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Providers;
+namespace Corals\Utility\Category\Providers;
 
 use Corals\Foundation\Providers\BaseUninstallModuleServiceProvider;
-use Corals\Modules\Utility\Category\database\migrations\CreateCategoryAttributeTables;
-use Corals\Modules\Utility\Category\database\seeds\UtilityCategoryDatabaseSeeder;
+use Corals\Utility\Category\database\migrations\CreateCategoryAttributeTables;
+use Corals\Utility\Category\database\seeds\UtilityCategoryDatabaseSeeder;
 
 class UninstallModuleServiceProvider extends BaseUninstallModuleServiceProvider
 {

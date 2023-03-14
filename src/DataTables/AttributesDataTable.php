@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\DataTables;
+namespace Corals\Utility\Category\DataTables;
 
 use Corals\Foundation\DataTables\BaseDataTable;
-use Corals\Modules\Utility\Category\Models\Attribute;
-use Corals\Modules\Utility\Category\Transformers\AttributeTransformer;
+use Corals\Utility\Category\Models\Attribute;
+use Corals\Utility\Category\Transformers\AttributeTransformer;
 use Yajra\DataTables\EloquentDataTable;
 
 class AttributesDataTable extends BaseDataTable

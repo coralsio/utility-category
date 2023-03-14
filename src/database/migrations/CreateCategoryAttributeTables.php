@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\database\migrations;
+namespace Corals\Utility\Category\database\migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Transformers\API;
+namespace Corals\Utility\Category\Transformers\API;
 
 use Corals\Foundation\Transformers\APIBaseTransformer;
-use Corals\Modules\Utility\Category\Models\Attribute;
+use Corals\Utility\Category\Models\Attribute;
 
 class AttributeTransformer extends APIBaseTransformer
 {

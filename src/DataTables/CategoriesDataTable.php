@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\DataTables;
+namespace Corals\Utility\Category\DataTables;
 
 use Corals\Foundation\DataTables\BaseDataTable;
-use Corals\Modules\Utility\Category\Models\Category;
-use Corals\Modules\Utility\Category\Transformers\CategoryTransformer;
+use Corals\Utility\Category\Models\Category;
+use Corals\Utility\Category\Transformers\CategoryTransformer;
 use Yajra\DataTables\EloquentDataTable;
 
 class CategoriesDataTable extends BaseDataTable

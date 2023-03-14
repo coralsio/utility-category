@@ -13,7 +13,7 @@
 
 @section('actions')
     @parent
-    @if (user()->can('update', \Corals\Modules\Utility\Category\Models\Category::class))
+    @if (user()->can('update', \Corals\Utility\Category\Models\Category::class))
         {!! CoralsForm::link(url($resource_url.'/hierarchy'), trans('utility-category::labels.category.hierarchy'), ['class'=>'btn btn-info']) !!}
     @endif
 @endsection

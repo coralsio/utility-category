@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Services;
+namespace Corals\Utility\Category\Services;
 
 use Corals\Foundation\Services\BaseServiceClass;
-use Corals\Modules\Utility\Category\Models\AttributeOption;
+use Corals\Utility\Category\Models\AttributeOption;
 
 class AttributeService extends BaseServiceClass
 {

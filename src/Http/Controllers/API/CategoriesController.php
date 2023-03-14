@@ -1,13 +1,13 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Http\Controllers\API;
+namespace Corals\Utility\Category\Http\Controllers\API;
 
 use Corals\Foundation\Http\Controllers\APIBaseController;
-use Corals\Modules\Utility\Category\DataTables\CategoriesDataTable;
-use Corals\Modules\Utility\Category\Http\Requests\CategoryRequest;
-use Corals\Modules\Utility\Category\Models\Category;
-use Corals\Modules\Utility\Category\Services\CategoryService;
-use Corals\Modules\Utility\Category\Transformers\API\CategoryPresenter;
+use Corals\Utility\Category\DataTables\CategoriesDataTable;
+use Corals\Utility\Category\Http\Requests\CategoryRequest;
+use Corals\Utility\Category\Models\Category;
+use Corals\Utility\Category\Services\CategoryService;
+use Corals\Utility\Category\Transformers\API\CategoryPresenter;
 
 class CategoriesController extends APIBaseController
 {

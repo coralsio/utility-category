@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Models;
+namespace Corals\Utility\Category\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Traits\ModelPropertiesTrait;

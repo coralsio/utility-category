@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Policies;
+namespace Corals\Utility\Category\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\Modules\Utility\Category\Models\Attribute;
+use Corals\Utility\Category\Models\Attribute;
 use Corals\User\Models\User;
 
 class AttributePolicy extends BasePolicy

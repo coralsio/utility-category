@@ -1,16 +1,16 @@
 <?php
 
-namespace Corals\Modules\Utility\Category;
+namespace Corals\Utility\Category;
 
 use Corals\Foundation\Providers\BasePackageServiceProvider;
-use Corals\Modules\Utility\Category\Facades\Category;
-use Corals\Modules\Utility\Category\Models\Attribute;
-use Corals\Modules\Utility\Category\Models\AttributeOption;
-use Corals\Modules\Utility\Category\Models\Category as CargoryModel;
-use Corals\Modules\Utility\Category\Models\Category as CategoryModel;
-use Corals\Modules\Utility\Category\Providers\UtilityAuthServiceProvider;
-use Corals\Modules\Utility\Category\Providers\UtilityRouteServiceProvider;
-use Corals\Modules\Utility\Models\Category\ModelOption;
+use Corals\Utility\Category\Facades\Category;
+use Corals\Utility\Category\Models\Attribute;
+use Corals\Utility\Category\Models\AttributeOption;
+use Corals\Utility\Category\Models\Category as CargoryModel;
+use Corals\Utility\Category\Models\Category as CategoryModel;
+use Corals\Utility\Category\Providers\UtilityAuthServiceProvider;
+use Corals\Utility\Category\Providers\UtilityRouteServiceProvider;
+use Corals\Utility\Models\Category\ModelOption;
 use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Illuminate\Database\Eloquent\Relations\Relation;

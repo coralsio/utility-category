@@ -1,13 +1,13 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Http\Controllers;
+namespace Corals\Utility\Category\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\BaseController;
 use Corals\Foundation\Http\Requests\BulkRequest;
-use Corals\Modules\Utility\Category\DataTables\CategoriesDataTable;
-use Corals\Modules\Utility\Category\Http\Requests\CategoryRequest;
-use Corals\Modules\Utility\Category\Models\Category;
-use Corals\Modules\Utility\Category\Services\CategoryService;
+use Corals\Utility\Category\DataTables\CategoriesDataTable;
+use Corals\Utility\Category\Http\Requests\CategoryRequest;
+use Corals\Utility\Category\Models\Category;
+use Corals\Utility\Category\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoriesController extends BaseController

@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Traits;
+namespace Corals\Utility\Category\Traits;
 
-use Corals\Modules\Utility\Category\Models\Category;
-use Corals\Modules\Utility\Category\Models\ModelOption;
+use Corals\Utility\Category\Models\Category;
+use Corals\Utility\Category\Models\ModelOption;
 use Illuminate\Database\Eloquent\Model;
 
 trait ModelHasCategory

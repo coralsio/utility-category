@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Facades;
+namespace Corals\Utility\Category\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -11,6 +11,6 @@ class Category extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \Corals\Modules\Utility\Category\Classes\CategoryManager::class;
+        return \Corals\Utility\Category\Classes\CategoryManager::class;
     }
 }

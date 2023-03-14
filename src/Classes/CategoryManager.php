@@ -1,11 +1,11 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Classes;
+namespace Corals\Utility\Category\Classes;
 
 use Corals\Foundation\Facades\CoralsForm;
-use Corals\Modules\Utility\Category\Models\Attribute;
-use Corals\Modules\Utility\Category\Models\AttributeOption;
-use Corals\Modules\Utility\Category\Models\Category;
+use Corals\Utility\Category\Models\Attribute;
+use Corals\Utility\Category\Models\AttributeOption;
+use Corals\Utility\Category\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class CategoryManager

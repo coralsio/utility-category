@@ -1,14 +1,14 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Http\Controllers;
+namespace Corals\Utility\Category\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\BaseController;
 use Corals\Foundation\Http\Requests\BulkRequest;
-use Corals\Modules\Utility\Category\DataTables\AttributesDataTable;
-use Corals\Modules\Utility\Category\Http\Requests\AttributeRequest;
-use Corals\Modules\Utility\Category\Models\Attribute;
-use Corals\Modules\Utility\Category\Models\Category;
-use Corals\Modules\Utility\Category\Services\AttributeService;
+use Corals\Utility\Category\DataTables\AttributesDataTable;
+use Corals\Utility\Category\Http\Requests\AttributeRequest;
+use Corals\Utility\Category\Models\Attribute;
+use Corals\Utility\Category\Models\Category;
+use Corals\Utility\Category\Services\AttributeService;
 use Illuminate\Support\Arr;
 
 class AttributesController extends BaseController

@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Models;
+namespace Corals\Utility\Category\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Traits\Node\SimpleNode;
@@ -59,7 +59,7 @@ class Category extends BaseModel implements HasMedia
         $input = '';
 
         foreach ($fields as $field) {
-            $input .= \Corals\Modules\Utility\Category\Facades\Category::renderAttribute($field, $product, $attributes);
+            $input .= \Corals\Utility\Category\Facades\Category::renderAttribute($field, $product, $attributes);
         }
 
         return $input;

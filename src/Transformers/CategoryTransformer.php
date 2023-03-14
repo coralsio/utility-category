@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Category\Transformers;
+namespace Corals\Utility\Category\Transformers;
 
 use Corals\Foundation\Transformers\BaseTransformer;
-use Corals\Modules\Utility\Category\Models\Category;
+use Corals\Utility\Category\Models\Category;
 
 class CategoryTransformer extends BaseTransformer
 {
