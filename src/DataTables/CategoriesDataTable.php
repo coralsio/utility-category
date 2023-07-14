@@ -31,7 +31,7 @@ class CategoriesDataTable extends BaseDataTable
      */
     public function query(Category $model)
     {
-//        return $model->withCount('products');
+        //        return $model->withCount('products');
         return $model->newQuery();
     }
 
