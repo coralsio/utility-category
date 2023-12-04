@@ -11,6 +11,6 @@
     "folder": "utility-category",
     "icon": "fa fa-folder-open",
     "require": {
-        "corals-utility": "^4.0"
+        "corals-utility": "^10.0.0"
     }
 }
