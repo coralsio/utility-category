@@ -18,7 +18,7 @@ class CreateCategoryAttributeTables extends Migration
         Schema::create('utility_categories', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name')->unique();
+            $table->string('name')->index();
             $table->string('slug')->unique()->index();
             $table->text('description')->nullable();
 
