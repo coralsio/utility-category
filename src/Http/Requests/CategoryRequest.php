@@ -38,7 +38,7 @@ class CategoryRequest extends BaseRequest
 
         if ($this->isStore()) {
             $rules = array_merge($rules, [
-                'name' => 'required|max:191|unique:utility_categories,name',
+                'name' => 'required|max:191',
                 'slug' => 'required|max:191|unique:utility_categories,slug',
             ]);
         }
@@ -46,7 +46,7 @@ class CategoryRequest extends BaseRequest
         if ($this->isUpdate()) {
             $category = $this->route('category');
             $rules = array_merge($rules, [
-                'name' => 'required|max:191|unique:utility_categories,name,' . $category->id,
+                'name' => 'required|max:191',
                 'slug' => 'required|max:191|unique:utility_categories,slug,' . $category->id,
             ]);
         }
