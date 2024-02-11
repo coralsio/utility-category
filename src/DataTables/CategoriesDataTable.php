@@ -57,7 +57,7 @@ class CategoriesDataTable extends BaseDataTable
     {
         return [
             'name' => ['title' => trans('utility-category::attributes.category.name'), 'class' => 'col-md-3', 'type' => 'text', 'condition' => 'like', 'active' => true],
-            'parent.id' => ['title' => trans('utility-category::attributes.category.parent_id'), 'class' => 'col-md-2', 'type' => 'select', 'options' => \Category::getCategoriesList(null, true), 'active' => true],
+            'parent.id' => ['title' => trans('utility-category::attributes.category.parent_id'), 'class' => 'col-md-2', 'type' => 'select2', 'options' => \Category::getCategoriesList(null, true), 'active' => true],
             'created_at' => ['title' => trans('Corals::attributes.created_at'), 'class' => 'col-md-2', 'type' => 'date', 'active' => true],
         ];
     }

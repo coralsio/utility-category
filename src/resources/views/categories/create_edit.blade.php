@@ -26,7 +26,14 @@
                         {!! CoralsForm::text('slug','utility-category::attributes.category.slug',true) !!}
                         {!! CoralsForm::radio('status','Corals::attributes.status',true, trans('Corals::attributes.status_options')) !!}
                         {!! CoralsForm::select('module','Utility::attributes.module', \Utility::getUtilityModules()) !!}
-                        {!! CoralsForm::select('parent_id', 'utility-category::attributes.category.parent_cat', \Category::getCategoriesList(null,true, false, null, $category->exists?[$category->id]:[]), false, null, [], 'select2') !!}
+                        {!! CoralsForm::select('parent_id','utility-category::attributes.category.parent_cat', [], false, null,
+                                                        ['class'=>'select2-ajax',
+                                                        'data'=>[
+                                                        'model'=>\Corals\Utility\Category\Models\Category::class,
+                                                        'columns'=> json_encode(['name','slug']),
+                                                        'selected'=>json_encode([$category->parent_id]),
+                                                         'where'=>json_encode([]),
+                                                        ]],'select2') !!}
                         {!! CoralsForm::checkbox('is_featured', 'utility-category::attributes.category.is_featured', $category->is_featured) !!}
                         {!! CoralsForm::select('category_attributes[]','utility-category::attributes.category.attributes', \Category::getAttributesList(),
                         false, $category->categoryAttributes()->pluck('attribute_id'), ['multiple'=>true], 'select2') !!}
