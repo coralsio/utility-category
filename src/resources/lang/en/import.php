@@ -26,5 +26,6 @@ return [
         'is_featured' => 'category is featured',
         'category_attributes' => 'category attributes',
         'description' => 'category description',
+        'thumbnail_link' => 'categroy thumbnail link'
     ],
 ];

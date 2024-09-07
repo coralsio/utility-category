@@ -104,7 +104,8 @@ class GenerateExcelForCategories implements ShouldQueue
                             'module' => $category->module,
                             'is_featured' => $category->is_featured,
                             'category_attributes' => $category->categoryAttributes()->pluck('attribute_id')->join('|'),
-                            'description' => $category->description
+                            'description' => $category->description,
+                            'thumbnail_link' => $category->getProperty('thumbnail_link')
                         ];
 
                         $writer->insertOne($categoryExportData);
