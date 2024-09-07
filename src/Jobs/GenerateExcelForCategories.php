@@ -88,7 +88,7 @@ class GenerateExcelForCategories implements ShouldQueue
             $writer = Writer::createFromPath($filePath, 'w+')
                 ->setDelimiter(config('corals.csv_delimiter', ','));
 
-            $headers = trans("utility-category::import.category-headers");
+            $headers = array_merge(['id' => 'category id'], trans("utility-category::import.category-headers"));
 
             $writer->insertOne(array_keys($headers));
 
@@ -96,9 +96,15 @@ class GenerateExcelForCategories implements ShouldQueue
                 foreach ($data as $category) {
                     try {
                         $categoryExportData = [
+                            'id' => $category->id,
                             'name' => $category->name,
                             'slug' => $category->slug,
-                            'parent' => optional($category->parent)->slug
+                            'status' => $category->status,
+                            'parent_id' => $category->parent_id,
+                            'module' => $category->module,
+                            'is_featured' => $category->is_featured,
+                            'category_attributes' => $category->categoryAttributes()->pluck('attribute_id')->join('|'),
+                            'description' => $category->description
                         ];
 
                         $writer->insertOne($categoryExportData);

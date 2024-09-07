@@ -20,6 +20,11 @@ return [
     'category-headers' => [
         'name' => 'category name',
         'slug' => 'category slug',
-        'parent' => 'category parent',
+        'status' => 'category status',
+        'parent_id' => 'Parent Category',
+        'module' => 'module',
+        'is_featured' => 'category is featured',
+        'category_attributes' => 'category attributes',
+        'description' => 'category description',
     ],
 ];

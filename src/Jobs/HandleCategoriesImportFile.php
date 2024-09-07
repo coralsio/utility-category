@@ -79,11 +79,23 @@ class HandleCategoriesImportFile implements ShouldQueue
      */
     protected function getCategoryData($record)
     {
-        return array_filter([
+
+        $data = array_filter([
             'name' => data_get($record, 'name'),
             'slug' => data_get($record, 'slug'),
-            'parent_id' => data_get($record, 'parent') ? optional(Category::query()->where('slug', data_get($record, 'parent'))->first())->id : null
+            'status' => data_get($record, 'status'),
+            'parent_id' => data_get($record, 'parent_id'),
+            'module' => data_get($record, 'module'),
+            'is_featured' => data_get($record, 'is_featured'),
+            'category_attributes'=>data_get($record,'category_attributes') ? explode('|',data_get($record,'category_attributes')) :null,
+            'description' => data_get($record, 'description'),
         ]);
+
+        if (data_get($record, 'thumbnail_link')) {
+            $data['properties'] = ['thumbnail_link' => data_get($record, 'thumbnail_link')];
+        }
+
+        return $data;
     }
 
     protected function initHandler()
@@ -92,10 +104,20 @@ class HandleCategoriesImportFile implements ShouldQueue
 
     protected function getValidationRules($data): array
     {
+        $status = join(',', array_keys(trans('Corals::attributes.status_options')));
+        $modules = join(',', array_keys(\Utility::getUtilityModules()));
+
         return [
             'name' => 'required|max:191',
             'slug' => 'required|max:191|unique:utility_categories,slug',
+            'status' => 'required|in:' . $status,
             'parent_id' => 'nullable|exists:utility_categories,id',
+            'module' => 'nullable|in:' . $modules,
+            'is_featured' => 'nullable|boolean',
+            'category_attributes' => 'nullable',
+            'category_attributes.*' => 'exists:utility_attributes,id',
+            'properties.thumbnail_link' => 'nullable',
+            'description' => 'nullable',
         ];
     }
 }
