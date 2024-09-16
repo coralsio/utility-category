@@ -6,6 +6,8 @@ use Corals\Foundation\DataTables\BaseDataTable;
 use Corals\Utility\Category\Models\Category;
 use Corals\Utility\Category\Transformers\CategoryTransformer;
 use Yajra\DataTables\EloquentDataTable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Corals\Utility\Category\Jobs\GenerateExcelForCategories;
 
 class CategoriesDataTable extends BaseDataTable
 {
@@ -76,5 +78,23 @@ class CategoriesDataTable extends BaseDataTable
         $url = url(config('utility-category.models.category.resource_url'));
 
         return ['resource_url' => $url];
+    }
+
+    /**
+     * @param $download
+     * @return ShouldQueue
+     */
+    protected function getCSVGeneratorJob($download)
+    {
+        $columns = $this->getExportColumnsFromBuilder();
+
+        return new GenerateExcelForCategories(
+            get_class($this),
+            $this->scopes,
+            $columns,
+            $this->getTableId(),
+            user(),
+            $download
+        );
     }
 }

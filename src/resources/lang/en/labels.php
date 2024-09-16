@@ -10,4 +10,5 @@ return [
     'category' => [
         'hierarchy' => 'Hierarchy',
     ],
+    'import' => 'Import',
 ];
