@@ -79,15 +79,16 @@ class HandleCategoriesImportFile implements ShouldQueue
      */
     protected function getCategoryData($record)
     {
+        $parentId = data_get($record, 'parent') ? optional(Category::query()->where('slug', data_get($record, 'parent'))->first())->id : null;
 
         $data = array_filter([
             'name' => data_get($record, 'name'),
             'slug' => data_get($record, 'slug'),
             'status' => data_get($record, 'status'),
-            'parent_id' => data_get($record, 'parent_id'),
+            'parent_id' => $parentId,
             'module' => data_get($record, 'module'),
             'is_featured' => data_get($record, 'is_featured'),
-            'category_attributes'=>data_get($record,'category_attributes') ? explode('|',data_get($record,'category_attributes')) :null,
+            'category_attributes' => data_get($record, 'category_attributes') ? explode('|', data_get($record, 'category_attributes')) : null,
             'description' => data_get($record, 'description'),
         ]);
 

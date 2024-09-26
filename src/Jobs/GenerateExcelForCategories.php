@@ -100,7 +100,7 @@ class GenerateExcelForCategories implements ShouldQueue
                             'name' => $category->name,
                             'slug' => $category->slug,
                             'status' => $category->status,
-                            'parent_id' => $category->parent_id,
+                            'parent' => optional($category->parent)->slug,
                             'module' => $category->module,
                             'is_featured' => $category->is_featured,
                             'category_attributes' => $category->categoryAttributes()->pluck('attribute_id')->join('|'),

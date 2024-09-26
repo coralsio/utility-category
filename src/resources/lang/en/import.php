@@ -21,7 +21,7 @@ return [
         'name' => '<sup class="required-asterisk">*</sup>name',
         'slug' => '<sup class="required-asterisk">*</sup>slug. If there is a matching stored record, it will be modified.',
         'status' => '<sup class="required-asterisk">*</sup>status. Valid values: <b>active</b>, <b>inactive</b>',
-        'parent_id' => 'Parent Category id <div><b>Source: </b>Categories</div>',
+        'parent' => 'Parent Category slug <div><b>Source: </b>Categories</div>',
         'module' => 'module',
         'is_featured' => 'is featured. Valid values: <b>1</b>, <b>0</b>',
         'category_attributes' => 'attributes id. Pipe concatenated for multiple  e.g. <b>2|4</b> <div><b>Source: </b>Attributes</div>',
