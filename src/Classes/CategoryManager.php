@@ -190,7 +190,7 @@ class CategoryManager
             }
         }
 
-        if (! $value) {
+        if (!$value) {
             $value = request()->input("options.$field->id");
         }
 
@@ -279,11 +279,17 @@ class CategoryManager
                     $attributes
                 );
                 $value = "<div style=\"display:inline-block;background-color:{$value};height: 100%;width: 25px;\">&nbsp;</div>";
-
+            case 'file':
+                $input = CoralsForm::{$field->type}(
+                    'options[' . $field->id . ']',
+                    $field->label,
+                    $asFilter ? false : $field->required,
+                    array_merge(['id' => 'options_' . $field->id], $attributes)
+                );
                 break;
         }
 
-        if (! $asForm) {
+        if (!$asForm) {
             return [
                 $field->label => $value,
             ];
